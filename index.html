@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoopsHub — Basketball Gym Reservations</title>
+  <meta name="description" content="Reserve a basketball court online in under a minute. Real-time availability, instant confirmation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ff6b1a'/><path d='M50 5v90M5 50h90M17 17c25 15 41 40 41 66M83 17C58 32 42 57 42 83' stroke='%230b0b0f' stroke-width='6' fill='none'/></svg>" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <span class="logo-ball">◕</span>
+        Hoops<span class="accent">Hub</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#courts">Courts</a>
+        <a href="#booking">Book Now</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#my-bookings">My Bookings <span class="badge" id="navBadge" hidden>0</span></a>
+      </nav>
+      <a href="#booking" class="btn btn-primary nav-cta">Reserve a Court</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <span class="pill">● Live availability · Instant confirmation</span>
+        <h1>YOUR COURT.<br /><span class="stroke-text">YOUR TIME.</span></h1>
+        <p>Reserve a basketball court in under a minute. No calls, no waiting — pick your slot, show up, and hoop.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary btn-lg">Book a Court Now</a>
+          <a href="#courts" class="btn btn-ghost btn-lg">View Courts</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong data-count="3">3</strong><span>Premium Courts</span></div>
+          <div><strong data-count="17" data-suffix="h">17h</strong><span>Open Daily</span></div>
+          <div><strong data-count="60" data-suffix="s">60s</strong><span>To Book</span></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="court-card">
+          <div class="court-diagram">
+            <div class="half-line"></div>
+            <div class="center-circle"></div>
+            <div class="key key-top"></div>
+            <div class="key key-bottom"></div>
+            <div class="ball"></div>
+          </div>
+          <div class="court-card-label">
+            <span>Court A · Full Court</span>
+            <span class="accent">₱1,800/hr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-ticker">
+      <div class="ticker-track">
+        <span>HOOPSHUB</span><span class="dot">●</span><span>BOOK · PLAY · REPEAT</span><span class="dot">●</span><span>OPEN 6AM – 11PM</span><span class="dot">●</span><span>HOOPSHUB</span><span class="dot">●</span><span>BOOK · PLAY · REPEAT</span><span class="dot">●</span><span>OPEN 6AM – 11PM</span><span class="dot">●</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COURTS ===== -->
+  <section class="section" id="courts">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our Courts</span>
+        <h2>Pick your <span class="accent">arena</span></h2>
+        <p>Three hand-built courts, regulation hoops, pro-grade flooring.</p>
+      </div>
+      <div class="court-grid" id="courtGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING ===== -->
+  <section class="section section-alt" id="booking">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Reservation</span>
+        <h2>Book in <span class="accent">4 steps</span></h2>
+        <p>Live availability updates instantly — what you see is what's free.</p>
+      </div>
+
+      <div class="booking-wrap reveal">
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+          <div class="step" data-step="1"><span class="step-num">1</span><span class="step-label">Court</span></div>
+          <div class="step-bar"></div>
+          <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label">Date</span></div>
+          <div class="step-bar"></div>
+          <div class="step" data-step="3"><span class="step-num">3</span><span class="step-label">Time</span></div>
+          <div class="step-bar"></div>
+          <div class="step" data-step="4"><span class="step-num">4</span><span class="step-label">Details</span></div>
+          <div class="step-bar"></div>
+          <div class="step" data-step="5"><span class="step-num">5</span><span class="step-label">Pay</span></div>
+        </div>
+
+        <div class="booking-panel">
+          <!-- STEP 1: COURT -->
+          <div class="panel active" data-panel="1">
+            <h3>Choose a court</h3>
+            <div class="pick-grid" id="courtPicker"></div>
+          </div>
+
+          <!-- STEP 2: DATE -->
+          <div class="panel" data-panel="2">
+            <h3>Pick a date</h3>
+            <div class="date-strip" id="dateStrip"></div>
+          </div>
+
+          <!-- STEP 3: TIME -->
+          <div class="panel" data-panel="3">
+            <div class="panel-head">
+              <h3>Select time slots</h3>
+              <div class="legend">
+                <span><i class="lg free"></i>Free</span>
+                <span><i class="lg busy"></i>Booked</span>
+                <span><i class="lg sel"></i>Selected</span>
+                <span><i class="lg peak"></i>Peak +₱300</span>
+              </div>
+            </div>
+            <div class="slot-grid" id="slotGrid"></div>
+            <p class="hint" id="slotHint">Tap a slot to start your reservation. Pick consecutive hours for longer sessions.</p>
+          </div>
+
+          <!-- STEP 4: DETAILS -->
+          <div class="panel" data-panel="4">
+            <h3>Your details</h3>
+            <form class="form" id="detailsForm" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="fullName">Full name *</label>
+                  <input type="text" id="fullName" placeholder="Jordan Mitchell" autocomplete="name" />
+                  <small class="err" data-err="fullName"></small>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone *</label>
+                  <input type="tel" id="phone" placeholder="(555) 019-4832" autocomplete="tel" />
+                  <small class="err" data-err="phone"></small>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" placeholder="you@email.com" autocomplete="email" />
+                  <small class="err" data-err="email"></small>
+                </div>
+                <div class="field">
+                  <label for="players">Players</label>
+                  <select id="players">
+                    <option value="1">1 player</option>
+                    <option value="2">2 players</option>
+                    <option value="4" selected>4 players</option>
+                    <option value="6">6 players</option>
+                    <option value="10">10 players (full runs)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="notes">Notes <span class="opt">(optional)</span></label>
+                <textarea id="notes" rows="3" placeholder="Birthday run, need a referee, etc."></textarea>
+              </div>
+            </form>
+          </div>
+
+          <!-- STEP 5: PAYMENT -->
+          <div class="panel" data-panel="5">
+            <h3>Confirm &amp; pay</h3>
+            <div class="pay-layout">
+              <div class="summary" id="orderSummary"></div>
+              <div class="pay-box">
+                <div class="pay-methods" id="payMethods">
+                  <button type="button" class="pm active" data-method="card">Card</button>
+                  <button type="button" class="pm" data-method="gcash">GCash</button>
+                  <button type="button" class="pm" data-method="counter">At counter</button>
+                </div>
+                <div class="pay-fields" id="cardFields">
+                  <div class="field">
+                    <label for="cardName">Name on card</label>
+                    <input type="text" id="cardName" placeholder="JORDAN MITCHELL" autocomplete="cc-name" />
+                    <small class="err" data-err="cardName"></small>
+                  </div>
+                  <div class="field">
+                    <label for="cardNum">Card number</label>
+                    <input type="text" id="cardNum" placeholder="4242 4242 4242 4242" inputmode="numeric" maxlength="19" autocomplete="cc-number" />
+                    <small class="err" data-err="cardNum"></small>
+                  </div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="cardExp">Expiry</label>
+                      <input type="text" id="cardExp" placeholder="MM/YY" inputmode="numeric" maxlength="5" autocomplete="cc-exp" />
+                      <small class="err" data-err="cardExp"></small>
+                    </div>
+                    <div class="field">
+                      <label for="cardCvc">CVC</label>
+                      <input type="text" id="cardCvc" placeholder="123" inputmode="numeric" maxlength="4" autocomplete="cc-csc" />
+                      <small class="err" data-err="cardCvc"></small>
+                    </div>
+                  </div>
+                </div>
+                <div class="pay-fields disabled" id="gcashFields" hidden>
+                  <div class="field">
+                    <label for="gcashNum">GCash mobile number</label>
+                    <input type="tel" id="gcashNum" placeholder="09XX XXX XXXX" inputmode="numeric" maxlength="13" />
+                    <small class="err" data-err="gcashNum"></small>
+                  </div>
+                  <p class="stub-note">You'll get an SMS prompt to confirm the payment.</p>
+                </div>
+                <p class="stub-note">Demo checkout — no real charge is made.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NAV -->
+          <div class="panel-nav">
+            <button class="btn btn-ghost" id="btnBack" disabled>← Back</button>
+            <div class="selection-chip" id="selChip"></div>
+            <button class="btn btn-primary" id="btnNext">Continue →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple, <span class="accent">honest</span> rates</h2>
+        <p>Charged per hour. Peak hours (5 PM – 9 PM) add ₱300/hr.</p>
+      </div>
+      <div class="price-grid" id="priceGrid"></div>
+      <div class="rules reveal">
+        <h4>House rules</h4>
+        <ul>
+          <li>Arrive 10 minutes before your slot — late arrivals don't extend your booking.</li>
+          <li>Cancel free up to 6 hours before your slot starts.</li>
+          <li>Non-marking shoes only. No food or drinks on the court.</li>
+          <li>Respect the rotation — games to 11, win by 2, next team on.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MY BOOKINGS ===== -->
+  <section class="section section-alt" id="my-bookings">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Reservations</span>
+        <h2>My <span class="accent">bookings</span></h2>
+        <p>Stored locally on this device.</p>
+      </div>
+      <div class="bookings-list" id="bookingsList"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="logo"><span class="logo-ball">◕</span>Hoops<span class="accent">Hub</span></a>
+        <p>123 Court Avenue, Riverside District<br />Open daily 6:00 AM – 11:00 PM</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="#courts">Courts</a>
+        <a href="#booking">Book Now</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#my-bookings">My Bookings</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="tel:+15550194832">(555) 019-4832</a>
+        <a href="mailto:hoops@hoopshub.example">hoops@hoopshub.example</a>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="container">© <span id="year"></span> HoopsHub · Built for hoopers, by hoopers.</div>
+    </div>
+  </footer>
+
+  <!-- ===== CONFIRMATION MODAL ===== -->
+  <div class="modal-backdrop" id="confirmModal" hidden>
+    <div class="modal">
+      <div class="confetti-layer" id="confettiLayer"></div>
+      <div class="modal-check">✓</div>
+      <h3>Court reserved!</h3>
+      <p class="modal-code">Booking code <strong id="modalCode"></strong></p>
+      <div class="modal-details" id="modalDetails"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modalDismiss">Done</button>
+        <a href="#my-bookings" class="btn btn-primary" id="modalView">View my bookings</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast" hidden>
+    <span id="toastText"></span>
+    <div class="toast-bar" id="toastBar"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
